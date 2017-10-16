@@ -1,0 +1,32 @@
+#include <iostream>
+#include "Header.h"
+using namespace std;
+
+void main()
+{
+	int *A;
+	cout << "Nhap so phan tu: ";
+	int n; cin >> n;
+	A = new int[n];
+	nhapmang(A, n);
+	int *B;
+	B = new int[n];
+	for (int i = 0; i < n; i++)
+	{
+		if (*(A + i) > 0) *(B + i) = *(A + i);
+		else { *(B + i) = -(*(A + i)); }
+	}
+	int i;
+	for (i = min_array(B, n); i >= 1; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			if ((*(B + j) % i) != 0) goto label1;
+		}
+		break;
+	label1: continue;
+	}
+	cout << "Uoc chung lon nhat cua cac phan tu trong mang la: " << i;
+	system("pause");
+	
+}
