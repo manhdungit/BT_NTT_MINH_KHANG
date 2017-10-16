@@ -1,0 +1,49 @@
+#include <iostream>
+#include "Header.h"
+using namespace std;
+
+int min_odd(int *A, int n);
+int min_odd(int *A, int n)
+{
+	int min = 2;
+	for (int i = 0; i < n; i++)
+	{
+		if ((*(A + i) % 2) != 0)
+		{
+			min = *(A + i);
+			break;
+		}
+	}
+	if (min % 2 == 0)
+	{
+		cout << "Eo co so le";
+		return 0;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		if ((*(A + i) % 2) != 0 && *(A + i) < min) min = *(A + i);
+	}
+	return min;
+}
+
+
+void main()
+{
+	int *A;
+	cout << "Nhap so phan tu: ";
+	int n; cin >> n;
+	A = new int[n];
+	nhapmang(A, n);
+	int minle;
+	minle= min_odd(A, n);
+	// Tim so chan lon nhat nho hon so le
+	int max = -2147483647;
+	for (int i = 0; i < n; i++)
+	{
+		if (*(A + i) > max&&*(A + i) < minle) max = *(A + i);
+	}
+	if (max % 2 != 0) cout << "Deo co so thoa man dieu may noi";
+	else cout << "So chan lon nhat nho hon moi so le trong mang la: " << max;
+	delete A;
+	system("pause");
+}
