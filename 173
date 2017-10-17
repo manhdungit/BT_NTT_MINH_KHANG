@@ -1,0 +1,35 @@
+#include <iostream>
+#include "Lib.h"
+using namespace std;
+void main()
+{
+	//Khai bao va nhap mang cua nguoi dung
+	int*A;
+	cout << "Nhap so phan tu: ";
+	int n; 
+	cin >> n; 
+	A = new int[n];
+	nhapmang(A, n);
+	// Tao mang chua cac chu so;
+	int chuso[10] = { 0,0,0,0,0,0,0,0,0,0 };
+	for (int i = 0; i < n; i++)
+	{
+		while (*(A + i) > 0)
+		{
+			chuso[*(A + i) % 10]++;
+			*(A + i) /= 10;
+		}
+	}
+	int min = 10000;
+	for (int i = 0; i < 10; i++)
+	{
+		if (chuso[i] < min&&chuso[i]!=0) min = chuso[i];
+	}
+	cout << "Chu so xuat hien it la:";
+	for (int i = 0; i < 10; i++)
+	{
+		if (chuso[i] == min) cout << i;
+	}
+	delete A;
+	system("pause");
+}
