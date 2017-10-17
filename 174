@@ -1,0 +1,32 @@
+#include <iostream>
+#include "Lib.h"
+using namespace std;
+void main()
+{
+	//Khai bao va nhap mang cua nguoi dung
+	int*A;
+	cout << "Nhap so phan tu: ";
+	int n; 
+	cin >> n; 
+	A = new int[n];
+	nhapmang(A, n);
+	cout << "Cac bo so thoa man la: ";
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			if (A[i] <= A[j])
+			{
+				cout << "(" << A[i] << "," << A[j] << ") ";
+			}
+			else
+			{
+				cout << "(" << A[j] << "," << A[i] << ") ";
+			}
+			
+		}
+		
+	}
+	delete A;
+	system("pause");
+}
