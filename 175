@@ -1,0 +1,36 @@
+#include <iostream>
+#include <math.h>
+#include "Lib.h"
+using namespace std;
+void main()
+{
+	//Khai bao va nhap mang cua nguoi dung
+	float *A;
+	cout << "Nhap so phan tu: ";
+	int n; 
+	cin >> n; 
+	A = new float[n];
+	nhapmang(A, n);
+	//Bai lam
+	float d = 1000000;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			if (A[i] - A[j] > -d&&A[i] - A[j] < d) d = abs(A[i] - A[j]);
+		}
+	}
+	cout << "Cap so gan nhau nhat la: \n";
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			if (A[i] - A[j] == -d||A[i] - A[j] == d)
+			{
+				cout << "A[" << i << "] = " << A[i] << " va " "A[" << j << "] = " << A[j] << endl;
+			}
+		}
+	}
+	system("pause");
+	delete A;
+}
