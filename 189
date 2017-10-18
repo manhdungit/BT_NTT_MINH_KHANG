@@ -1,0 +1,31 @@
+#include <iostream>
+#include <math.h>
+#include "Lib.h"
+using namespace std;
+void main()
+{
+	//Khai bao va nhap mang cua nguoi dung
+	int *A;
+	cout << "Nhap so phan tu: ";
+	int n; 
+	cin >> n; 
+	A = new int[n];
+	nhapmang(A, n);
+	int *B;
+	B = new int[n];
+	for (int i = 0; i < n; i++)
+	{
+		*(B + i) = *(A + i);
+	}
+	//Bai lam
+	for (int i = 0; i < n; i++)
+	{
+		while (*(B + i) > 10)
+		{
+			*(B + i) /= 10;
+		}
+		if (*(B + i) % 2 != 0) cout << "A[" << i << "] = " << A[i] << endl;
+	}
+	delete A, B;
+	system("pause");
+}
