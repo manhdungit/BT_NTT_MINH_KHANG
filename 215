@@ -1,0 +1,28 @@
+#include <iostream>
+#include <math.h>
+#include "Lib.h"
+using namespace std;
+void main()
+{
+	//Khai bao va nhap mang cua nguoi dung
+	int *A;
+	cout << "Nhap so phan tu: ";
+	int n; 
+	cin >> n; 
+	A = new int[n];
+	nhapmang(A, n);
+	//Bai lam
+	int tongd = 0;
+	int socapso = 0;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			socapso++;
+			tongd += abs(A[i] - A[j]);
+		}
+	}
+	cout << "Khoang cach trung binh la: " << (float)(1.0*tongd / socapso);
+	delete A;
+	system("pause");
+}
