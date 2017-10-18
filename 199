@@ -1,0 +1,22 @@
+#include <iostream>
+#include <math.h>
+#include "Lib.h"
+using namespace std;
+void main()
+{
+	//Khai bao va nhap mang cua nguoi dung
+	int *A;
+	cout << "Nhap so phan tu: ";
+	int n; 
+	cin >> n; 
+	A = new int[n];
+	nhapmang(A, n);
+	//Bai lam
+	cout << "Cac phan tu nguyen to la: " << endl;
+	for (int i = 0; i < n; i++)
+	{
+		if (number_of_argument(*(A + i))) cout << "A[" << i << "] = " << A[i] << endl;
+	}
+	delete A;
+	system("pause");
+}
