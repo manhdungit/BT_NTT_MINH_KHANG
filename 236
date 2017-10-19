@@ -1,0 +1,37 @@
+#include <iostream>
+#include <math.h>
+#include "Lib.h"
+using namespace std;
+void main()
+{
+	//Khai bao va nhap mang cua nguoi dung
+	int *A;
+	cout << "Nhap so phan tu mang A: ";
+	int n; 
+	cin >> n; 
+	A = new int[n];
+	nhapmang(A, n);
+	/*Mang B*/
+	cout << "Nhap so phan tu mang B: ";
+	int m;
+	cin >> m;
+	int *B;
+	B = new int[m];
+	nhapmang(B, m);
+	//Dem so lan
+	int dem = 0;
+	//Bai lam
+	//Khi m>n
+	for (int j = 0; j <= abs(m - n); j++)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			if (A[i] != B[i + j]) goto label1;
+		}
+		dem++;
+		label1: continue;
+	}
+	cout << dem;
+	delete A;
+	system("pause");
+}
